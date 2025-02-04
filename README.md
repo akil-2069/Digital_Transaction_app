@@ -43,7 +43,7 @@ This project is a **Digital Transaction Website** built using **MERN Stack** (Mo
 3. **Setup environment variables:**
    Create a `.env` file and add the following:
    ```env
-   PORT=5000
+   PORT=3000
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
    ```
