@@ -61,20 +61,20 @@ This project is a **Digital Transaction Website** built using **MERN Stack** (Mo
    ```
 
 ## API Endpoints
-| Method | Endpoint          | Description          |
-|--------|------------------|----------------------|
-| POST   | /api/auth/signup | User registration   |
-| POST   | /api/auth/login  | User login          |
-| GET    | /api/user        | Fetch user details  |
-| POST   | /api/transaction | Create a transaction |
-| GET    | /api/transaction | Fetch transactions  |
+| Method | Endpoint         | Description         |
+|--------|------------------|---------------------|
+| POST   |       ...        | User registration   |
+| POST   |       ...        | User login          |
+| GET    |       ...        | Fetch user details  |
+| POST   |       ...        | Create a transaction|
+| GET    |       ...        | Fetch transactions  |
 
 ## License
 This project is open-source and available under the **MIT License**.
 
 ## Contact
 For any inquiries, feel free to reach out:
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: syedgibrahim@gmail.com
+- **GitHub**: [SyedGMIbrahim](https://github.com/SyedGMIbrahim)
 
 
