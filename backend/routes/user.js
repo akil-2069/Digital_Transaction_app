@@ -49,7 +49,7 @@ router.post("/signup", async (req, res) => {
         userId
     }, JWT_SECRET)
     
-    res.json({
+    res.status(201).json({
         message: "User created successfully",
         token: token    
     })
@@ -74,14 +74,14 @@ router.post("/signin", async (req, res) => {
             userId: user._id
         }, JWT_SECRET);
 
-        res.json({
+        res.status(200).json({
             token: token
         });
 
         return;
     }
 
-    res.status(211).json({
+    res.status(401).json({
         message: "Error while logging in"
     })
 })
