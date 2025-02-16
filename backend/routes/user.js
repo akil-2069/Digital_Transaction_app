@@ -59,7 +59,7 @@ router.post("/signup", async (req, res) => {
 
     const token = jwt.sign({
         userId
-    }, JWT_SECRET)
+    }, JWT_SECRET);
     
     res.status(201).json({
         message: "User created successfully",
@@ -120,8 +120,9 @@ router.get("/bulk", async (req, res) => {
     const users = await User.find({
         $or: [{
             firstName: {
-                "$regex": filter
-            },
+                "$regex": filter,
+            }
+        }, {
             lastName: {
                 "$regex": filter
             }
