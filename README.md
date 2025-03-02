@@ -1,4 +1,4 @@
-# Digital Transaction Website (In-progress)
+# Digital Transaction Website
 
 ## Overview
 This project is a **Digital Transaction Website** built using **MERN Stack** (MongoDB, Express.js, React.js, and Node.js). It provides secure and efficient digital transactions with **JWT authentication**, input validation using **Zod**, and various middlewares to enhance security and functionality.
