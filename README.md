@@ -44,30 +44,22 @@ This project is a **Digital Transaction Website** built using **MERN Stack** (Mo
    Create a `.env` file and add the following:
    ```env
    PORT=3000
-   MONGO_URI=your_mongodb_connection_string
+   MONGO_URL=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
    ```
 
 4. **Run the backend server:**
    ```sh
-   npm run server
+   cd backend/
+   node index.js
    ```
 
 5. **Run the frontend:**
    ```sh
-   cd client
+   cd frontend/
    npm install
-   npm start
+   npm run dev
    ```
-
-## API Endpoints
-| Method | Endpoint         | Description         |
-|--------|------------------|---------------------|
-| POST   |       ...        | User registration   |
-| POST   |       ...        | User login          |
-| GET    |       ...        | Fetch user details  |
-| POST   |       ...        | Create a transaction|
-| GET    |       ...        | Fetch transactions  |
 
 ## License
 This project is open-source and available under the **MIT License**.
