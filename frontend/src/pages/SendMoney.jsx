@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 
 export const SendMoney = () => {
     const [searchParams] = useSearchParams();
     const name = searchParams.get("name");
     const id = searchParams.get("id");
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState(0);
+    const navigate = useNavigate();
 
 
     return <div className="flex justify-center h-screen bg-gray-100">
@@ -29,7 +30,7 @@ export const SendMoney = () => {
                             </label>
                             <input
                                 onChange={(e) => {
-                                    setAmount(e.target.value);
+                                    setAmount(Number(e.target.value));
                                 }}
                                 type="number"
                                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
@@ -45,7 +46,8 @@ export const SendMoney = () => {
                                 headers: {
                                     Authorization: "Bearer " + localStorage.getItem("token")
                                 }
-                            })
+                            });
+                            navigate("/transaction");
                         }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                             Initiate Transfer
                         </button>

@@ -24,12 +24,12 @@ export function Users() {
             }} type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200" />
         </div>
         <div>
-            {users.map(user => <User key={user._id} user={user} />)}
+            {users.map(user => <User key={user._id} id={user._id} user={user} />)}
         </div>
     </>
 }
 
-function User({key, user}) {
+function User({id, user}) {
     const navigate = useNavigate();
 
     return <div className="flex justify-between">
@@ -48,7 +48,7 @@ function User({key, user}) {
 
         <div className="flex flex-col justify-center h-ful">
             <Button onClick={() => {
-                navigate("/send?id=" + key + "&name=" + user.firstName)
+                navigate("/send?id=" + id + "&name=" + user.firstName)
             }} label={"Send Money"} />
         </div>
     </div>
