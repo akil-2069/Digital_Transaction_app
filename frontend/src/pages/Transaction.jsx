@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Transaction = () => {
     const [loading, setLoading] = useState(true);
-    const [progress, setProgress] = useState(0); 
+    const [progress, setProgress] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,37 +24,35 @@ export const Transaction = () => {
         return () => clearInterval(progressInterval);
     }, [navigate]);
 
-    return <>
-        {loading ? (
-            <div className="bg-slate-300 h-screen flex justify-center">
-                <div className="flex flex-col justify-center">
-                    <div className="rounded-lg bg-white w-80 py-10 px-4 h-auto flex flex-col justify-center shadow-lg">
-                        <div className="flex flex-col items-center">
-                            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex justify-center items-center p-4">
+            {loading ? (
+                <div className="w-full max-w-md">
+                    <div className="rounded-2xl bg-white/90 backdrop-blur-lg shadow-xl p-6 transition-all duration-300 hover:shadow-2xl">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="w-full bg-gray-200 rounded-full h-3">
                                 <div 
-                                    className="bg-blue-600 h-2.5 rounded-full transition-all duration-75" 
+                                    className="bg-gradient-to-r from-indigo-600 to-purple-600 h-3 rounded-full transition-all duration-75 ease-in-out" 
                                     style={{ width: `${progress}%` }}
                                 ></div>
                             </div>
-                            <p className="mt-4 text-lg font-medium text-gray-700">
+                            <p className="text-lg font-medium text-gray-700">
                                 Processing Transaction...
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        ) : (
-            <div className="bg-green-300 h-screen flex justify-center">
-                <div className="flex flex-col justify-center">
-                    <div className="rounded-lg bg-white w-80 py-10 px-4 h-50 flex flex-col justify-center shadow-lg">
+            ) : (
+                <div className="w-full max-w-md">
+                    <div className="rounded-2xl bg-white/90 backdrop-blur-lg shadow-xl p-6 transition-all duration-300 hover:shadow-2xl">
                         <div className="flex flex-col items-center">
-                            <p className="text-2xl font-semibold text-green-600">
+                            <p className="text-2xl font-semibold text-indigo-600 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                                 Transaction Successful
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        )}
-    </>
-}
+            )}
+        </div>
+    );
+};

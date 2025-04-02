@@ -1,6 +1,13 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("{mongoDB URL}");
+mongoose.connect("{mongoDB URL");
+
+const transactionSchema = new mongoose.Schema({
+    date: { type: Date, default: Date.now },
+    amount: Number,
+    type: String,
+    to: String
+});
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -21,7 +28,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        maxLength: 50,
+        maxLength: 50
     },
     lastName: {
         type: String,
@@ -29,7 +36,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         maxLength: 50
     }
-})
+});
 
 const accountSchema = new mongoose.Schema({
     userId: {
@@ -40,13 +47,14 @@ const accountSchema = new mongoose.Schema({
     balance: {
         type: Number,
         required: true
-    }
-})
+    },
+    transactions: [transactionSchema] // Ensure this comes after transactionSchema is defined
+});
 
-const User = new mongoose.model('User', userSchema);
-const Account = new mongoose.model('Account', accountSchema);
+const User = mongoose.model('User', userSchema);
+const Account = mongoose.model('Account', accountSchema);
 
 module.exports = {
     User,
     Account
-}
+};

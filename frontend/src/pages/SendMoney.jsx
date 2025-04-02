@@ -9,51 +9,55 @@ export const SendMoney = () => {
     const [amount, setAmount] = useState(0);
     const navigate = useNavigate();
 
-
-    return <div className="flex justify-center h-screen bg-gray-100">
-        <div className="h-full flex flex-col justify-center">
-            <div className="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg">
-                <div className="flex flex-col space-y-1.5 pt-6 px-6">
-                    <h2 className="text-3xl font-bold text-center">Send Money</h2>
-                </div>
-                <div className="p-6">
-                    <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
-                            <span className="text-2xl text-white">{name[0].toUpperCase()}</span>
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex justify-center items-center p-4">
+            <div className="w-full max-w-md">
+                <div className="rounded-2xl bg-white/90 backdrop-blur-lg shadow-xl p-6 transition-all duration-300 hover:shadow-2xl">
+                    <h2 className="text-3xl font-bold text-center text-gray-800 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                        Send Money
+                    </h2>
+                    <div className="mt-6 space-y-6">
+                        <div className="flex items-center space-x-4">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-md">
+                                <span className="text-2xl text-white font-semibold">
+                                    {name[0].toUpperCase()}
+                                </span>
+                            </div>
+                            <h3 className="text-2xl font-semibold text-gray-800">
+                                {name}
+                            </h3>
                         </div>
-                        <h3 className="text-2xl font-semibold">{name}</h3>
-                    </div>
-                    <div className="pt-4">
-                        <div className="pb-10"> 
-                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 pb-10" htmlFor="amount">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-gray-700" htmlFor="amount">
                                 Amount (in Rs)
                             </label>
                             <input
-                                onChange={(e) => {
-                                    setAmount(Number(e.target.value));
-                                }}
+                                onChange={(e) => setAmount(Number(e.target.value))}
                                 type="number"
-                                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 bg-white/50"
                                 id="amount"
                                 placeholder="Enter amount"
                             />
                         </div>
-                        <button onClick={() => {
-                            axios.post("http://localhost:3000/api/v1/account/transfer", {
-                                to: id,
-                                amount
-                            }, {
-                                headers: {
-                                    Authorization: "Bearer " + localStorage.getItem("token")
-                                }
-                            });
-                            navigate("/transaction");
-                        }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
+                        <button 
+                            onClick={() => {
+                                axios.post("http://localhost:3000/api/v1/account/transfer", {
+                                    to: id,
+                                    amount
+                                }, {
+                                    headers: {
+                                        Authorization: "Bearer " + localStorage.getItem("token")
+                                    }
+                                });
+                                navigate("/transaction");
+                            }}
+                            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg px-6 py-3 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-300/50 transition-all duration-200 transform hover:-translate-y-0.5"
+                        >
                             Initiate Transfer
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-}
+    );
+};

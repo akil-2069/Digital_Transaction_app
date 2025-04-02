@@ -39,8 +39,16 @@ router.post("/transfer", authMiddleware, async (req, res) => {
         });
     }
 
-    await Account.updateOne({ userId: req.userId}, { $inc: { balance: -amount } }).session(session);
-    await Account.updateOne({ userId: to }, { $inc: { balance: amount } }).session(session);
+    await Account.updateOne({ userId: req.userId }, { 
+        $inc: { balance: -amount }, 
+        $push: { transactions: { amount: -amount, type: "debit", to } }
+    }).session(session);
+    
+    await Account.updateOne({ userId: to }, { 
+        $inc: { balance: amount }, 
+        $push: { transactions: { amount: amount, type: "credit", to: req.userId } }
+    }).session(session);
+    
 
     await session.commitTransaction();
     session.endSession();
@@ -49,5 +57,16 @@ router.post("/transfer", authMiddleware, async (req, res) => {
         message: "Transfer Successful"
     });
 })
+
+router.get("/transactions", authMiddleware, async (req, res) => {
+    const account = await Account.findOne({ userId: req.userId });
+    
+    if (!account) {
+        return res.status(404).json({ message: "Account not found" });
+    }
+
+    res.json({ transactions: account.transactions });
+});
+
 
 module.exports = router;

@@ -14,24 +14,16 @@ export const Signup = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    return <div className="bg-slate-300 h-screen flex justify-center">
-        <div className="flex flex-col justify-center">
-            <div className="rounded-lg bg-white w-80 text-center py-2 px-4 h-max">
+    return <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex justify-center items-center p-4">
+        <div className="w-full max-w-md">
+            <div className="rounded-2xl bg-white/90 backdrop-blur-lg shadow-xl p-6 transition-all duration-300 hover:shadow-2xl">
                 <Heading label={"Sign up"} />
                 <SubHeading label={"Enter your information to create an account"} />
-                <InputBox onChange={(e) => {
-                    setFirstName(e.target.value);
-                }} label={"First Name"} placeholder={"John"} />
-                <InputBox onChange={(e) => {
-                    setLastName(e.target.value);
-                }} label={"Last Name"} placeholder={"Doe"} />
-                <InputBox onChange={(e) => {
-                    setUsername(e.target.value);
-                }} label={"Email"} placeholder={"syed@gmail.com"} />
-                <InputBox onChange={(e) => {
-                    setPassword(e.target.value)
-                }} label={"Password"} placeholder={"123456"} />
-                <div className="pt-4">
+                <InputBox onChange={(e) => setFirstName(e.target.value)} label={"First Name"} placeholder={"John"} />
+                <InputBox onChange={(e) => setLastName(e.target.value)} label={"Last Name"} placeholder={"Doe"} />
+                <InputBox onChange={(e) => setUsername(e.target.value)} label={"Email"} placeholder={"syed@gmail.com"} />
+                <InputBox onChange={(e) => setPassword(e.target.value)} label={"Password"} placeholder={"••••••"} />
+                <div className="flex justify-center pt-6">
                     <Button onClick={async() => {
                         const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
                             firstName,
