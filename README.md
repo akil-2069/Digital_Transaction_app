@@ -73,5 +73,5 @@ This project is open-source and available under the MIT License.
 ## Contact
 For any inquiries, feel free to reach out:
 
-- **Email**: syedgibrahim@gmail.com
-- **GitHub**: SyedGMIbrahim
+- **Email**: akilan.m2023@vitstudent.ac.in
+- **GitHub**: akil-2069
